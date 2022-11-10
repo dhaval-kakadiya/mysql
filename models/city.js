@@ -1,10 +1,10 @@
-module.exports = (connection,Datatype) => {
+module.exports = (connection,Datatypes) => {
     const citySchema = {
         city_name : {
-            type : Datatype.STRING
+            type : Datatypes.STRING
         },
         state : {
-            type : Datatype.STRING
+            type : Datatypes.STRING
         }
 
     }

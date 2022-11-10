@@ -17,4 +17,6 @@ const db = {}
 db.Sequelize = Sequelize
 db.sequelize = connection
 
+db.City = require('../models/city')(connection,DataTypes)
+
 module.exports = db
