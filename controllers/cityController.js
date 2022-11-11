@@ -70,7 +70,7 @@ exports.updateCity = async (req,res) => {
             city_name : req.body.city_name,
             state:req.body.state
         }
-        const city = await City.update(updateCity, {where: { id } } ,{new:true}) 
+        const city = await City.update(updateCity, {where: { id } }) 
         return res.status(200).json({
             success : true,
             message : 'City Successfully Update By Pk',

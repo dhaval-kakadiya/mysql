@@ -18,5 +18,6 @@ db.Sequelize = Sequelize
 db.sequelize = connection
 
 db.City = require('../models/city')(connection,DataTypes)
+db.User = require('../models/user')(connection,DataTypes)
 
 module.exports = db
