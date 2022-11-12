@@ -4,7 +4,7 @@ const{ User } = db
 module.exports = async () => {
   try {
     const email= process.env.EMAIL
-    const admin = await User.findByPk(email)
+    const admin = await User.findOne({where:{email}})
     if (!admin) {
       const user = {
         first_name:  process.env.FIRST_NAME,
@@ -14,9 +14,9 @@ module.exports = async () => {
         role : 'admin'
       }
       
-      const newUser = await user.create(user)
+      const newUser = await User.create(user)
       console.log('Admin Seeded')
-      console.log(newUser);
+      // console.log(newUser);
     } else {
       console.log('Admin exist')
     }

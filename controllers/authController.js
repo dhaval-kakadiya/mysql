@@ -29,7 +29,7 @@ exports.signUp = async (req, res) => {
 exports.logIn = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await User.findAll({ email });
+    const user = await User.findOne({where:{email}})
     if (!user) {
       return res.status(422).json({
         success: false,
