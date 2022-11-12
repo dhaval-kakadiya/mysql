@@ -5,9 +5,9 @@ const {addCity,getCity, getCityById, updateCity, deleteCity} = require('../contr
 
 const authorization = require('../middleware/jwtAuth');
 
-router.post('/addcity',authorization,addCity)
-router.get('/getcity',authorization,getCity)
-router.get('/getcity/:id',authorization,getCityById)
+router.post('/addcity',authorization(['admin']),addCity)
+router.get('/getcity',authorization(['admin','user']),getCity)
+router.get('/getcity/:id',authorization(['admin','user']),getCityById)
 router.put('/updatecity/:id',updateCity)
 router.delete('/deletecity/:id',deleteCity)
 

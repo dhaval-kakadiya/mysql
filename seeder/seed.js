@@ -16,7 +16,7 @@ module.exports = async () => {
       
       const newUser = await User.create(user)
       console.log('Admin Seeded')
-      // console.log(newUser);
+      console.log(newUser);
     } else {
       console.log('Admin exist')
     }

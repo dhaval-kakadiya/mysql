@@ -11,6 +11,10 @@ module.exports = (connection,Datatypes) => {
         },
         password : {
             type : Datatypes.STRING
+        },
+        role:{
+            type : Datatypes.STRING,
+            default:'user'
         }
 
     }
