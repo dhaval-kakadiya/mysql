@@ -11,7 +11,7 @@ module.exports = (roles) => (req,res,next) => {
             })
         }
 
-        const spliteToken = authorizetion.split(' ');
+        const spliteToken = authorizetion.split(' ')
         const authToken = spliteToken[1]
 
         const decode = jwt.verify(authToken , process.env.SECRET_KEY)
@@ -21,11 +21,17 @@ module.exports = (roles) => (req,res,next) => {
             req.user = decode
             next()
         }
+        else{
+           return res.status(401).json({
+                success: false,
+                message: "Invalid User"
+            })
+        }
 
     } catch (error) {
-        res.status(401).json({
+       return res.status(401).json({
             success: false,
             message: error.message
-        });
+        })
     }
 }
