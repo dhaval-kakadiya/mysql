@@ -1,5 +1,5 @@
 const db =require('../config/db');
-const{ User, City } = db
+const{ User, City, Game } = db
 
 exports.addUser = async (req,res) => {
     try {
@@ -30,9 +30,16 @@ exports.addUser = async (req,res) => {
 exports.getUser = async (req,res) => {
     try {
         const user = await User.findAll({
-            where: {first_name: "node" },
+            // where: {first_name: "node" }, 
+            // attributes: ["first_name"],
+            // attributes:{ exclude: ["first_name"] },
             include: [{
-              model: City
+              model: City,
+            },{
+                model: Game,
+                through: {
+                    attributes: [] 
+                }
             }]
           })
         return res.status(200).json({
