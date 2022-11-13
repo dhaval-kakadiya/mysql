@@ -18,6 +18,11 @@ db.Sequelize = Sequelize
 db.sequelize = connection
 
 db.City = require('../models/city')(connection,DataTypes)
-db.User = require('../models/user')(connection,DataTypes)
+db.User = require('../models/user')(connection,DataTypes,db.City)
+
+db.City.hasMany(db.User,{foreignKey:"cityId"})
+db.User.belongsTo(db.City,{foreignKey:"cityId"})
+
+
 
 module.exports = db

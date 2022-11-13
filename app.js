@@ -9,7 +9,7 @@ const adminSeed = require('./seeder/seed')
 app.use(express.urlencoded({extended:false}));
 app.use(express.json())
 
-db.sequelize.sync().then(()=>{
+db.sequelize.sync({force:false}).then(()=>{
     adminSeed()
     console.log('Successfull Sync');
 }).catch((err)=>{
@@ -17,8 +17,6 @@ db.sequelize.sync().then(()=>{
 })
 
 app.use('/',router)
-
-
 
 app.listen(port,() => {
     console.log(`server Listning On Port ${port}`);

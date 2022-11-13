@@ -1,5 +1,5 @@
 const db =require('../config/db');
-const{ City } = db
+const{ City, User } = db
 
 exports.addCity = async (req,res) => {
     try {
@@ -27,7 +27,11 @@ exports.addCity = async (req,res) => {
 exports.getCity = async (req,res) => {
     try {
        
-        const city = await City.findAll()
+        const city = await City.findAll({
+            include: {
+                model: User
+            }
+        })
         return res.status(200).json({
             success : true,
             message : 'City Successfully Read',
@@ -45,7 +49,11 @@ exports.getCity = async (req,res) => {
 exports.getCityById = async (req,res) => {
     try {
         const id = req.params.id
-        const city = await City.findByPk(id)
+        const city = await City.findByPk(id,{
+            include: {
+                model: User
+            }
+        })
         return res.status(200).json({
             success : true,
             message : 'City Successfully Read By Pk',

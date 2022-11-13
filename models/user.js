@@ -1,4 +1,4 @@
-module.exports = (connection,Datatypes) => {
+module.exports = (connection,Datatypes,City) => {
     const userSchema = {
         first_name : {
             type : Datatypes.STRING
@@ -12,9 +12,16 @@ module.exports = (connection,Datatypes) => {
         password : {
             type : Datatypes.STRING
         },
+        cityId: { 
+            type: Datatypes.INTEGER,
+            reference: {
+                model : City,
+                key : 'id'
+            }
+        },
         role:{
             type : Datatypes.STRING,
-            default:'user'
+            defaultValue:'user'
         }
 
     }
